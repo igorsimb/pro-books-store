@@ -1,3 +1,5 @@
+# file can be emptied because we use allauth
+
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CustomUserCreationForm

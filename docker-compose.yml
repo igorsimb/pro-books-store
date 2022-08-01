@@ -13,6 +13,8 @@ services:
     environment:
       - "DJANGO_SECRET_KEY=h9_-^avrkd=p0k2a826!yv*y&q-p(e#5y1_bm@p0ttx_abwq8j"
       - "DJANGO_DEBUG=True"
+      - "EMAIL_HOST_USER=fatalhope@gmail.com"
+      - "EMAIL_HOST_PASSWORD=zzszdguhbecxjzkf"
   db:
     image: postgres:11
     volumes:

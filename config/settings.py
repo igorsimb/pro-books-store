@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-from environs import Env
+from environs import Env  # pylint: disable=import-error
 
 env = Env()
 env.read_env()
@@ -162,10 +162,19 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_SESSION_REMEMBER = True  # None/True/False
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # False = user enters pwd once when registering
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+DEFAULT_FROM_EMAIL = 'admin@ez2task.com'
+
+
+# smtp
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = 587
